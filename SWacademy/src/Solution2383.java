@@ -4,11 +4,11 @@ import java.util.Scanner;
 
 public class Solution2383 {
 	static class Person{
-		int slectStair;
+		int selectStair;
 		int spendTime;
 		int leftTime;
 		public Person() {
-		
+			
 		}
 	}
 	static int T;
