@@ -11,8 +11,8 @@ public class Solution2383 {
 		public Person(int selectStair) {
 			//초기화
 			this.selectStair = selectStair;
-			//마스터는 잘되겠지
-
+			//마스터는 잘되겠지ㅋㅋㅋ
+			//몇번째 테스트임
 		}
 	}
 	static int T;
