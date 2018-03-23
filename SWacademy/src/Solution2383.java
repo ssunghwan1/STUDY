@@ -8,9 +8,9 @@ public class Solution2383 {
 		int selectStair;
 		int spendTime;
 		int leftTime;
-		public Person(int selectStair) {
+		public Person(int selectStair1) {
 			//초기화
-			this.selectStair = selectStair;
+			this.selectStair = selectStair1;
 			//마스터는 잘되겠지ㅋㅋㅋ
 			//몇번째zz z테z스트z임
 			//마지막이 되길
