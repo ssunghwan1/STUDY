@@ -7,8 +7,8 @@ public class Solution2383 {
 		int selectStair;
 		int spendTime;
 		int leftTime;
-		public Person() {
-			int selectStair;
+		public Person(int selectStair) {
+			this.selectStair = selectStair;
 		}
 	}
 	static int T;
