@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Solution2383 {
 	static class Person{
-<<<<<<< HEAD
+
 		int selectStair;
 		int spendTime;
 		int leftTime;
@@ -12,14 +12,7 @@ public class Solution2383 {
 			//초기화
 			this.selectStair = selectStair;
 			//마스터는 잘되겠지
-			
-=======
-		int slectStair;
-		int spendTime;
-		int leftTime;
-		public Person() {
-		//test
->>>>>>> refs/remotes/origin/master
+
 		}
 	}
 	static int T;
