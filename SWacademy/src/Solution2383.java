@@ -12,7 +12,8 @@ public class Solution2383 {
 			//초기화
 			this.selectStair = selectStair;
 			//마스터는 잘되겠지ㅋㅋㅋ
-			//몇번째 테스트임
+			//몇번째zz z테z스트z임
+			//마지막이 되길
 		}
 	}
 	static int T;
