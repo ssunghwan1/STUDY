@@ -10,6 +10,7 @@ public class Solution2383 {
 		int leftTime;
 		public Person(int selectStair1) {
 			//초기화
+			int a;
 			this.selectStair = selectStair1;
 			//마스터는 잘되겠지ㅋㅋㅋ
 			//몇번째zz z테z스트z임
