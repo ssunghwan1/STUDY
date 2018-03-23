@@ -8,6 +8,7 @@ public class Solution2383 {
 		int spendTime;
 		int leftTime;
 		public Person(int selectStair) {
+			//√ ±‚»≠
 			this.selectStair = selectStair;
 			
 		}
