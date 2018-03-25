@@ -4,6 +4,7 @@ import java.util.Queue;
 import java.util.Scanner;
 
 public class Solution2383 {
+<<<<<<< HEAD
 	static class Stair{
 		int y;
 		int x;
@@ -12,6 +13,20 @@ public class Solution2383 {
 			this.y = y;
 			this.x = x;
 			this.length = length;
+=======
+	static class Person{
+
+		int selectStair;
+		int spendTime;
+		int leftTime;
+		public Person(int selectStair1) {
+			//초기화
+			int a;
+			this.selectStair = selectStair1;
+			//마스터는 잘되겠지ㅋㅋㅋ
+			//몇번째zz z테z스트z임
+			//마지막이 되길
+>>>>>>> refs/remotes/origin/master
 		}
 	}
 	
