@@ -1,44 +1,79 @@
-/*https://www.swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5V4A46AdIDFAWu
+/*
+ * https://www.swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5V4A46AdIDFAWu
+
+
+*
+*3 3 10
+7 2 9
+6 6 6
+5 5 7
 */
 import java.util.Scanner;
-
 public class Solution2115 {
+	static class dfsyx{
+		int y;
+		int x;
+	}
 	static int T;
 	static int N;
-	static int M;
-	static int C;
+	static int M; //벌통의 수
+	static int C; //꿀을 채취할 수 있는 최대 양
 	static int map[][];
 	static int amount[][];
 	static int visit[][];
 	static int result;
-
-	static void cal(int y1, int x1, int y2, int x2){
-		int curResult;
-		int maxM1 = N-x1-1;
-		int maxM2 = N-x2-1;
-		int totalAmount = 0; 
-		int curAmount1=map[y1][x1];
+	static int totalAmount;
+	static int curAmount1;
+	static int curAmount2;
+	static int maxM1;
+	
+	static void dfs(int y, int x){
+		if(curAmount1+map[y][x] <= C){
+			curAmount1 += map[y][x];
+			totalAmount += map[y][x]*map[y][x];
+			for(int i=1; i<M-x ; i++){
+				dfs(y,x+i);
+			}
+		}else{
+			if(result < totalAmount ) result = totalAmount;
+			return;
+		}
 		
+		
+	}
+	
+	static int cal(int y1, int x1, int y2, int x2){
+		maxM1 =N-x1;
+		int maxM1 = N-x1;
+		int maxM2 = N-x2;
+		totalAmount = 0; 
+		curAmount1=0;
+		curAmount2=0;
+		//중간에 빼먹고 채취 가능
 		//첫번째
 			for(int i= 0 ; i< M; i++){ //벌꿀 최대량 구하기
-				if(i>maxM1) break; //범위를 초과하면 break
+				if(i>=maxM1) break; //범위를 초과하면 break
+				visit[y1][x1+i] = 1;
+			
+			//dfs(y1,x1);
+			
 				if(curAmount1+map[y1][x1+i] <=C){ // 최대 담을 수 있는 양보다 작으면
 					curAmount1 +=map[y1][x1+i];
-					visit[y1][x1+i] = 1;
 					totalAmount+= map[y1][x1+i]*map[y1][x1+i];
 				}else break;
 			}
+		//	System.out.println(totalAmount);
 		//두번째
-			/*if(visit[y2][x2]) {
-				int curAmount2 = map[y2][x2];
-				for(int i=0; i<M ; i++) {
-					if(i>maxM2) break;					
-				}
 				
-			}*/
-		
-		
-		
+				for(int i=0; i<M ; i++) {
+					if(i>=maxM2) break;		
+					if(visit[y2][x2+i] == 1 ) break;;
+					if(curAmount2+map[y2][x2+i] <=C){
+					curAmount2+=map[y2][x2+i];
+					totalAmount += map[y2][x2+i]*map[y2][x2+i];
+					}
+				}
+				return totalAmount;
 	}
 	
 
@@ -47,6 +82,8 @@ public class Solution2115 {
 		T = scan.nextInt();
 
 		for (int tc = 1; tc <= T; tc++) {
+			int tmpResult;
+			result =0;
 			N = scan.nextInt();
 			M = scan.nextInt();
 			C = scan.nextInt();
@@ -64,12 +101,22 @@ public class Solution2115 {
 				for (int j = 0; j < N; j++) {
 					for (int i2 = 0; i2 < N; i2++) {
 						for (int j2 = 0; j2 < N; j2++) {
-
+						tmpResult = cal(i,j,i2,j2);
+						if(result<tmpResult) result = tmpResult;
+					if(tmpResult==146){
+							System.out.println("-----------------");
+							System.out.print(i+ " ");
+							System.out.println(j);
+							System.out.print(i2+ " ");
+							System.out.println(j2);
+						}
 						}
 					}
 				}
 			}
-
+			//result = cal(0,0,0,0);
+			//dfs(0,0);
+			System.out.println("#"+tc+" "+result);
 		}
 
 	}
