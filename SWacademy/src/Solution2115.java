@@ -9,6 +9,7 @@ public class Solution2115 {
 	static int C;
 	static int map[][];
 	static int amount[][];
+	static int visit[][];
 	static int result;
 
 	static void cal(int y1, int x1, int y2, int x2){
@@ -18,15 +19,23 @@ public class Solution2115 {
 		int totalAmount = 0; 
 		int curAmount1=map[y1][x1];
 		
-	
+		//첫번째
 			for(int i= 0 ; i< M; i++){ //벌꿀 최대량 구하기
 				if(i>maxM1) break; //범위를 초과하면 break
 				if(curAmount1+map[y1][x1+i] <=C){ // 최대 담을 수 있는 양보다 작으면
 					curAmount1 +=map[y1][x1+i];
+					visit[y1][x1+i] = 1;
 					totalAmount+= map[y1][x1+i]*map[y1][x1+i];
 				}else break;
 			}
-		
+		//두번째
+			/*if(visit[y2][x2]) {
+				int curAmount2 = map[y2][x2];
+				for(int i=0; i<M ; i++) {
+					if(i>maxM2) break;					
+				}
+				
+			}*/
 		
 		
 		
@@ -43,6 +52,7 @@ public class Solution2115 {
 			C = scan.nextInt();
 			map = new int[N][N];
 			amount = new int[N][N];
+			visit = new int[N][N];
 			result =0;
 			for (int i = 0; i < N; i++) {
 				for (int j = 0; j < N; j++) {
