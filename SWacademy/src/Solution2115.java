@@ -3,10 +3,11 @@
 
 
 *
-*3 3 10
-7 2 9
-6 6 6
-5 5 7
+*4 3 12
+8 8 6 5
+5 2 7 4
+8 5 1 7
+7 8 9 4
 */
 import java.util.Scanner;
 public class Solution2115 {
@@ -27,19 +28,18 @@ public class Solution2115 {
 	static int curAmount2;
 	static int maxM1;
 	
-	static void dfs(int y, int x){
+	static int dfs(int y, int x, int curAmount1, int totalAmount){
 		if(curAmount1+map[y][x] <= C){
 			curAmount1 += map[y][x];
-			totalAmount += map[y][x]*map[y][x];
-			for(int i=1; i<M-x ; i++){
-				dfs(y,x+i);
+			totalAmount += map[y][x]*map[y][x]; 
+			for(int i=1; i<N-x ; i++){
+				dfs(y,x+i, curAmount1, totalAmount);
 			}
 		}else{
 			if(result < totalAmount ) result = totalAmount;
-			return;
-		}
-		
-		
+			return totalAmount;
+		}	
+		return totalAmount;
 	}
 	
 	static int cal(int y1, int x1, int y2, int x2){
@@ -55,24 +55,20 @@ public class Solution2115 {
 				if(i>=maxM1) break; //범위를 초과하면 break
 				visit[y1][x1+i] = 1;
 			
-			//dfs(y1,x1);
-			
-				if(curAmount1+map[y1][x1+i] <=C){ // 최대 담을 수 있는 양보다 작으면
-					curAmount1 +=map[y1][x1+i];
-					totalAmount+= map[y1][x1+i]*map[y1][x1+i];
-				}else break;
+			totalAmount = dfs(y1,x1,0,0);
+
 			}
 		//	System.out.println(totalAmount);
 		//두번째
 				
-				for(int i=0; i<M ; i++) {
+				/*for(int i=0; i<M ; i++) {
 					if(i>=maxM2) break;		
 					if(visit[y2][x2+i] == 1 ) break;;
 					if(curAmount2+map[y2][x2+i] <=C){
 					curAmount2+=map[y2][x2+i];
 					totalAmount += map[y2][x2+i]*map[y2][x2+i];
 					}
-				}
+				}*/
 				return totalAmount;
 	}
 	
@@ -101,21 +97,20 @@ public class Solution2115 {
 				for (int j = 0; j < N; j++) {
 					for (int i2 = 0; i2 < N; i2++) {
 						for (int j2 = 0; j2 < N; j2++) {
-						tmpResult = cal(i,j,i2,j2);
-						if(result<tmpResult) result = tmpResult;
-					if(tmpResult==146){
+					//	tmpResult = cal(i,j,i2,j2);
+					//	if(result<tmpResult) result = tmpResult;
+				/*	if(tmpResult==146){
 							System.out.println("-----------------");
 							System.out.print(i+ " ");
 							System.out.println(j);
 							System.out.print(i2+ " ");
 							System.out.println(j2);
-						}
+						}*/
 						}
 					}
 				}
 			}
-			//result = cal(0,0,0,0);
-			//dfs(0,0);
+			dfs(1,0,0,0);
 			System.out.println("#"+tc+" "+result);
 		}
 
