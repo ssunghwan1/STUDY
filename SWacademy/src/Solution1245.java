@@ -1,3 +1,4 @@
+//https://www.swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV15MeBKAOgCFAYD&categoryId=AV15MeBKAOgCFAYD&categoryType=CODE&&&
 import java.util.Scanner;
 
 public class Solution1245 {
