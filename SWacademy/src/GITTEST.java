@@ -11,6 +11,18 @@ public class GITTEST {
 		a.push(7);
 		a.push(2);
 		a.push(11);
+		a.sort(null).push(3);
+		a.push(7);
+		a.push(2);
+		a.push(11);
+		a.sort(null).push(3);
+		a.push(7);
+		a.push(2);
+		a.push(11);
+		a.sort(null).push(3);
+		a.push(7);
+		a.push(2);
+		a.push(11);
 		a.sort(null);
 		
 		while(!a.isEmpty()){
