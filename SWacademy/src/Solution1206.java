@@ -18,7 +18,7 @@ public class Solution1206 {
 		int max =0;
 		int result=0;
 		// 앞에 2 뒤에 2개 비어있음
-		for(int i=2; i< N-3; i++) {			
+		for(int i=2; i< N-2; i++) {			
 			max = getMax(i);
 			if(buildingArr[i]-max > 0) {
 				result += buildingArr[i]-max;
