@@ -1,33 +1,44 @@
 import java.util.Arrays;
 import java.util.Scanner;
-
+/*
+1
+5
+1 3 1 3 1
+ */
 //백만장자 프로젝트
 public class Solution1859 {
 	static int T, N;
-	static int priceArr[] = new int[1000000];
+	static int priceArr[];
 	static int sortedPriceArr[];
-	static int Answer;
+	static long Answer;
 	static int getMaxIndex(int max, int maxIndex) {
-		for(int i=maxIndex; i< N; i++) {
+		for(int i=N-1; i>= maxIndex; i-- ) {
 			if(priceArr[i] == max) {
 				return i;
 			}
 		}
 		return maxIndex;
 	}
-	static int getResult() {
-		int max;
+	static long getResult() {
+		int max=0;
 		int maxIndex =0;
 		int tmpMaxIndex =0 ;
-		int result =0;
-		for(int i=N-1; i>= 0;i++) {
+		long result =0;
+		
+		for(int i=N-1; i>= 0;i--) {
 			max = sortedPriceArr[i];
 			tmpMaxIndex = getMaxIndex(max, maxIndex);
+			/*System.out.println(tmpMaxIndex);*/
 			if(maxIndex != tmpMaxIndex) {
 				for(int j=maxIndex; j< tmpMaxIndex; j++) {
-					result += priceArr[tmpMaxIndex] - priceArr[j];  
+					if(priceArr[tmpMaxIndex] - priceArr[j] > 0) {
+						result += priceArr[tmpMaxIndex] - priceArr[j];
+					}
 				}
+				maxIndex = tmpMaxIndex;
 			}
+			/*System.out.println(result);*/
+			
 		}
 		return result;
 		
@@ -37,23 +48,17 @@ public class Solution1859 {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		T = scan.nextInt();
-		for(int tc =0 ; tc<T ; tc++) {
+		for(int tc =1 ; tc<=T ; tc++) {
 			N = scan.nextInt();
-			Arrays.fill(priceArr, 0);
+			priceArr = new int[N];
+			sortedPriceArr = new int[N];
 			for(int i=0; i<N; i++) {
 				priceArr[i] = scan.nextInt();
+				sortedPriceArr[i] = priceArr[i];
 			}
-			sortedPriceArr = priceArr;
 			Arrays.sort(sortedPriceArr);
 			Answer = getResult();
 			System.out.println("#"+tc+" " +Answer);
-			
-			// 내림차순 정렬될 배열 ㄱㄱ
-			// 최댓값을 찾는다
-			// 최댓값 이전 모든 것들은 구매 후 최댓값일 때 판매한다.
-			// 2번재 큰값을 찾는다 위치파악
-			// 최댓값 이후의 것들 중 최댓값을 구한다
-			// 반복
 			
 		}
 	}
