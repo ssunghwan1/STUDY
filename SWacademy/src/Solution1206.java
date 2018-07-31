@@ -4,12 +4,28 @@ public class Solution1206 {
 	static int N;
 	static int buildingArr[];
 	static int Answer;
-	static void getResult() {
+	static int getMax(int x) {
+		int max = 0;
+		
+		max = buildingArr[x-2] > max ? buildingArr[x-2] :max;
+		max = buildingArr[x-1] > max ? buildingArr[x-1] :max;
+		max = buildingArr[x+1] > max ? buildingArr[x+1] :max;
+		max = buildingArr[x+2] > max ? buildingArr[x+2] :max;
+		
+		return max;
+	}
+	static int getResult() {
+		int max =0;
+		int result=0;
 		// 앞에 2 뒤에 2개 비어있음
 		for(int i=2; i< N-3; i++) {			
-		
-			//기준값 - 양쪽 2칸의 MAX -> 해당 빌딩 조망권 갯수
+			max = getMax(i);
+			if(buildingArr[i]-max > 0) {
+				result += buildingArr[i]-max;
+			}
 		}
+		
+		return result;
 		
 		
 	}
@@ -22,7 +38,7 @@ public class Solution1206 {
 			for(int i=0; i< N; i++) {
 				buildingArr[i]= scan.nextInt();
 			}
-			getResult();
+			Answer = getResult();
 			System.out.println("#" + tc + " " + Answer);
 		}
 
