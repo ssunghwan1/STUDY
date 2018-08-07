@@ -28,7 +28,7 @@ public class Solution2805 {
 				}
 			}
 			getResult();
-
+			System.out.println("#"+ tc +" " + Answer);
 			
 		}
 
@@ -61,17 +61,37 @@ public class Solution2805 {
 			}
 		}
 		//왼쪽 아래 부터 해야함
-		for(int i=0; i< len ; i++) {
-			for(int j=0; j<=i ;j++) {
-				sum += map[i-j][j];
+		for(int i= N - 1; i > len ; i--) {
+			for(int j=0; j< N- i ; j++) {
+				sum += map[i+j][j];
+			}
+		}
+		//오른쪽 위
+		for(int j = N-1; j > len ; j--) {
+			for(int i=0; i< N-j; i++) {
+				sum += map[i][j+i];
 			}
 		}
 		
-		//오른쪽 위
-		
 		//오른쪽 아래
+		for(int i = N ; i> len +1; i--) {
+			for(int j= 0; j< N-i+1 ; j++) {
+				sum += map[N-1-j][i+j-1];
+			}
+		}
+		
+		//System.out.println(sum);
+		
+/*		for(int i=0; i< N; i++) {
+			System.out.println();
+			for(int j=0; j<N ; j++) {
+				System.out.print(map[i][j]);
+			}
+		}*/
 		return sum;
 	}
+	
+
 	
 }
 
