@@ -1,6 +1,12 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-
+/*
+1
+1 1 1 1
+1 1 1 2
+1 1 2 1
+1 1 1 1
+ */
 public class Solution2819 {
 	static int T;
 	static int map[][] = new int[4][4];
@@ -19,6 +25,7 @@ public class Solution2819 {
 				}
 			}
 			Answer = getResult();
+			System.out.println(Answer);
 
 		}
 	}
@@ -34,6 +41,7 @@ public class Solution2819 {
 	}
 	static int sovle(int y, int x, String input) {
 		input += Integer.toString(map[y][x]);
+		int result = 0;
 		
 		if(input.length() == 6) {
 			if(chkResult(input)) {
@@ -43,28 +51,31 @@ public class Solution2819 {
 			}
 		}
 		
-		int result = 0;
-		//µ¿
-		if(canGo(x+1,y)) {
-			sovle(x+1,y, input);
-		}
-		input = input.substring(0, input.length() -1);
-		//¼­
-		if(canGo(x-1,y)) {
-			sovle(x-1,y, input);
-		}
-		input = input.substring(0, input.length() -1);
-		//³²
-		if(canGo(x,y+1)) {
-			sovle(x,y+1, input);
-		}
-		input = input.substring(0, input.length() -1);
-		//ºÏ
-		if(canGo(x,y-1)) {
-			sovle(x,y-1, input);
-		}
-
 		
+		//µ¿
+		System.out.println(input);
+		if(canGo(y,x+1)) {
+			result = sovle(y,x+1, input);
+			input = input.substring(0, input.length() -1);
+		}
+		//¼­
+		if(canGo(y,x-1)) {
+			sovle(y,x-1, input);
+			input = input.substring(0, input.length() -1);
+		}
+		/*
+		//³²
+		if(canGo(y+1,x)) {
+			sovle(y+1,x, input);
+			input = input.substring(0, input.length() -1);
+		}
+		//ºÏ
+		if(canGo(y-1,x)) {
+			sovle(y-1,x, input);
+			input = input.substring(0, input.length() -1);
+		}
+		*/
+		return result;
 	}
 	static boolean canGo(int y, int x) {
 		if(y>=0 && x>=0 && y<4 && x< 4) {

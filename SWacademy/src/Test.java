@@ -7,7 +7,8 @@ public class Test {
     static int n;
          
     public static void main(String args[]) {
-    	String test = "";
-    	System.out.println(test.length());
+    	String test = "abcd";
+
+    	System.out.println(test.substring(0,test.length()-1));
     }
 }
